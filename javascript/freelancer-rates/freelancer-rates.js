@@ -19,7 +19,7 @@
 //
 // Get those rates calculated!
 
-const HOURS_PER_DAY = 8
+const DAILY_WORK_HOURS = 8
 const BILLABLE_DAYS = 22
 
 /**
@@ -29,7 +29,7 @@ const BILLABLE_DAYS = 22
  * @returns {number} the rate per day
  */
 export function dayRate(ratePerHour) {
-  return ratePerHour * HOURS_PER_DAY
+  return ratePerHour * DAILY_WORK_HOURS
 }
 
 /**
