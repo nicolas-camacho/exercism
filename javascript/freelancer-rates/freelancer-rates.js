@@ -19,8 +19,8 @@
 //
 // Get those rates calculated!
 
-const DAILY_WORK_HOURS = 8
-const BILLABLE_DAYS = 22
+const DAILY_WORK_HOURS = 8;
+const BILLABLE_DAYS = 22;
 
 /**
  * The day rate, given a rate per hour
@@ -28,7 +28,9 @@ const BILLABLE_DAYS = 22
  * @param {number} ratePerHour
  * @returns {number} the rate per day
  */
-export function dayRate(ratePerHour) { return ratePerHour * DAILY_WORK_HOURS}
+export function dayRate(ratePerHour) {
+  return ratePerHour * DAILY_WORK_HOURS;
+}
 
 /**
  * Calculates the number of days in a budget, rounded down
@@ -37,8 +39,9 @@ export function dayRate(ratePerHour) { return ratePerHour * DAILY_WORK_HOURS}
  * @param {number} ratePerHour: the rate per hour
  * @returns {number} the number of days
  */
-export function daysInBudget(
-    budget, ratePerHour) { return Math.floor(budget / dayRate(ratePerHour))}
+export function daysInBudget(budget, ratePerHour) {
+  return Math.floor(budget / dayRate(ratePerHour));
+}
 
 /**
  * Calculates the discounted rate for large projects, rounded up
@@ -49,9 +52,11 @@ export function daysInBudget(
  * @returns {number} the rounded up discounted rate
  */
 export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
-  const billiableMonts = Math.floor(numDays / BILLABLE_DAYS)
-  const monthlyRate = dayRate(ratePerHour) * BILLABLE_DAYS
-  const remainingDays = numDays % BILLABLE_DAYS
-  return Math.ceil(billiableMonts * monthlyRate * (1 - discount) +
-                   remainingDays * dayRate(ratePerHour));
+  const billiableMonts = Math.floor(numDays / BILLABLE_DAYS);
+  const monthlyRate = dayRate(ratePerHour) * BILLABLE_DAYS;
+  const remainingDays = numDays % BILLABLE_DAYS;
+  return Math.ceil(
+    billiableMonts * monthlyRate * (1 - discount) +
+      remainingDays * dayRate(ratePerHour),
+  );
 }
