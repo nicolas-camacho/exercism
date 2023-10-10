@@ -1,8 +1,8 @@
 // @ts-check
 //
-// ☝🏽 The line above enables type checking for this file. Various IDEs interpret
-// the @ts-check directive. It will give you helpful autocompletion on the web
-// and supported IDEs when implementing this exercise. You don't need to
+// ☝🏽 The line above enables type checking for this file. Various IDEs
+// interpret the @ts-check directive. It will give you helpful autocompletion on
+// the web and supported IDEs when implementing this exercise. You don't need to
 // understand types, JSDoc, or TypeScript in order to complete this JavaScript
 // exercise, and can completely ignore this comment block and directive.
 
@@ -28,9 +28,7 @@ const BILLABLE_DAYS = 22
  * @param {number} ratePerHour
  * @returns {number} the rate per day
  */
-export function dayRate(ratePerHour) {
-  return ratePerHour * DAILY_WORK_HOURS
-}
+export function dayRate(ratePerHour) { return ratePerHour * DAILY_WORK_HOURS}
 
 /**
  * Calculates the number of days in a budget, rounded down
@@ -39,9 +37,8 @@ export function dayRate(ratePerHour) {
  * @param {number} ratePerHour: the rate per hour
  * @returns {number} the number of days
  */
-export function daysInBudget(budget, ratePerHour) {
-  return Math.floor(budget / dayRate(ratePerHour))
-}
+export function daysInBudget(
+    budget, ratePerHour) { return Math.floor(budget / dayRate(ratePerHour))}
 
 /**
  * Calculates the discounted rate for large projects, rounded up
@@ -52,8 +49,9 @@ export function daysInBudget(budget, ratePerHour) {
  * @returns {number} the rounded up discounted rate
  */
 export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
-  const billiableMonts = Math.floor(numDays/BILLABLE_DAYS)
+  const billiableMonts = Math.floor(numDays / BILLABLE_DAYS)
   const monthlyRate = dayRate(ratePerHour) * BILLABLE_DAYS
   const remainingDays = numDays % BILLABLE_DAYS
-  return Math.ceil(billiableMonts * monthlyRate * (1 - discount) + remainingDays * dayRate(ratePerHour));
+  return Math.ceil(billiableMonts * monthlyRate * (1 - discount) +
+                   remainingDays * dayRate(ratePerHour));
 }
